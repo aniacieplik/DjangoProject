@@ -95,7 +95,6 @@ class ProductModelTest(TestCase):
 
 
 class CustomerModelTest(TestCase):
-    # ✅ Test 1: Customer creation with valid data
     def test_create_customer_with_valid_data(self):
         customer = Customer.objects.create(
             name='John Doe',
@@ -104,7 +103,6 @@ class CustomerModelTest(TestCase):
         self.assertEqual(customer.name, 'John Doe')
         self.assertEqual(customer.address, '123 Main Street')
 
-    # ❌ Test 2: Customer creation with missing name
     def test_create_customer_with_missing_name(self):
         customer = Customer(
             address='123 Main Street'
@@ -112,7 +110,6 @@ class CustomerModelTest(TestCase):
         with self.assertRaises(ValidationError):
             customer.full_clean()
 
-    # ❌ Test 3: Customer creation with missing address
     def test_create_customer_with_missing_address(self):
         customer = Customer(
             name='John Doe'
@@ -120,7 +117,6 @@ class CustomerModelTest(TestCase):
         with self.assertRaises(ValidationError):
             customer.full_clean()
 
-    # ❌ Test 4: Customer creation with blank name
     def test_create_customer_with_blank_name(self):
         customer = Customer(
             name='',
@@ -129,7 +125,6 @@ class CustomerModelTest(TestCase):
         with self.assertRaises(ValidationError):
             customer.full_clean()
 
-    # ❌ Test 5: Customer creation with blank address
     def test_create_customer_with_blank_address(self):
         customer = Customer(
             name='John Doe',
@@ -138,7 +133,6 @@ class CustomerModelTest(TestCase):
         with self.assertRaises(ValidationError):
             customer.full_clean()
 
-    # ❌ Test 6: Customer creation with edge case for name length (too short)
     def test_create_customer_with_too_short_name(self):
         customer = Customer(
             name='',
