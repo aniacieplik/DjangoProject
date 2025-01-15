@@ -77,7 +77,6 @@ class ProductTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_update_product_as_admin_user(self):
-        # Fix the error by using self.admin_user
         admin_token = str(AccessToken.for_user(self.admin_user))  # Corrected line
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {admin_token}')
         data = {
