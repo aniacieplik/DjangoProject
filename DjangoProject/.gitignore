@@ -4,6 +4,9 @@ myenv/
 # Ignore Python cache files
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.zip
 
 # Ignore database files
 *.sqlite3
